@@ -2,7 +2,8 @@
 
 A sleek, modern to-do list application built with .NET MAUI for iOS devices.
 
-![App Screenshot](https://via.placeholder.com/800x400?text=To-Do+List+App)
+<img width="381" alt="Screenshot 2025-04-17 at 17 20 52" src="https://github.com/user-attachments/assets/97be4f0b-2190-4e0f-a8b6-6030093d31a9" />
+
 
 ## ✨ Features
 
