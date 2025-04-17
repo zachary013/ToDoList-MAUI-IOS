@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ToDoList.ViewModels"
+             x:Class="ToDoList.MainPage"
+             BackgroundColor="#f5f5f5"
+             Title="To-Do List">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="20">
+        <!-- Header -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,10">
+            <VerticalStackLayout Grid.Column="0" Spacing="5">
+                <Label Text="To-Do List" FontSize="32" FontAttributes="Bold" TextColor="#512BD4" />
+                <Label Text="Keep track of your tasks" FontSize="16" TextColor="Gray" />
+            </VerticalStackLayout>
+            
+            <Button Grid.Column="1"
+                    Text="Delete All"
+                    BackgroundColor="#ff6b6b"
+                    TextColor="White"
+                    Command="{Binding DeleteAllTasksCommand}"
+                    CornerRadius="8"
+                    HeightRequest="40"
+                    VerticalOptions="Center"
+                    Margin="0,0,0,0" />
+        </Grid>
+        
+        <!-- Separator -->
+        <BoxView Grid.Row="0" HeightRequest="1" Color="#e0e0e0" VerticalOptions="End" Margin="0,5,0,5" />
+
+        <!-- Task List -->
+        <CollectionView Grid.Row="1" 
+                        ItemsSource="{Binding Tasks}"
+                        ItemTemplate="{StaticResource TaskItemTemplate}"
+                        SelectionMode="None"
+                        Margin="0,10,0,0">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <Label Text="No tasks yet" 
+                           FontSize="18" 
+                           TextColor="Gray" 
+                           HorizontalOptions="Center" />
+                    <Label Text="Add a task below to get started" 
+                           FontSize="14" 
+                           TextColor="LightGray" 
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <!-- Add Task Section -->
+        <Frame Grid.Row="2" 
+               BorderColor="#e0e0e0" 
+               BackgroundColor="White" 
+               CornerRadius="10" 
+               Padding="15" 
+               Margin="0,10,0,0"
+               HasShadow="True">
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry Grid.Column="0" 
+                       Placeholder="Enter a new task..." 
+                       Text="{Binding NewTaskTitle}" 
+                       ReturnCommand="{Binding AddTaskCommand}"
+                       PlaceholderColor="LightGray"
+                       VerticalOptions="Center" />
+                
+                <Button Grid.Column="1" 
+                        Text="Add" 
+                        Command="{Binding AddTaskCommand}" 
+                        BackgroundColor="#512BD4"
+                        TextColor="White"
+                        CornerRadius="8"
+                        HeightRequest="40"
+                        Margin="10,0,0,0" />
+            </Grid>
+        </Frame>
+    </Grid>
+
+</ContentPage>
